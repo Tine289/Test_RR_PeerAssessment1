@@ -16,10 +16,6 @@ knitr::opts_chunk$set(fig.path='Figs/')
 ```
 
 
-```r
-options(knitr.duplicate.label = "allow")
-```
-
 ## 1. Loading and Preprocessing Data
 
 ```r
@@ -35,7 +31,7 @@ aggActivity <- aggregate(steps~ date , data = activity, FUN = sum, na.rm = TRUE)
 hist(aggActivity$steps, xlab = "Number of steps per day", ylab = "Frequency", main = "Number of steps per day", col = "yellow")
 ```
 
-![](Figs/Steps per day-1.png)<!-- -->
+![](Figs/Steps_per_day-1.png)<!-- -->
 
 Average Number of Steps per Day
 
@@ -51,8 +47,8 @@ print(MeanSteps)
 Median Number of Steps per Day
 
 ```r
-MedianSteps <- median(aggActivity$steps, na.rm = TRUE)
-print(MedianSteps)
+Steps_Med <- median(aggActivity$steps, na.rm = TRUE)
+print(Steps_Med)
 ```
 
 ```
@@ -67,7 +63,7 @@ stepsPerInterval_mean <- aggregate(steps ~ interval, data = activity, FUN = mean
 plot(stepsPerInterval_mean$interval, stepsPerInterval_mean$steps, type = "l", xlab = "Interval", ylab = "Number of steps per interval", lwd = 1.5, col = "steelblue", main = "Average Number of Steps per Interval")
 ```
 
-![](Figs/Average Daily Activity Pattern-1.png)<!-- -->
+![](Figs/Average_Daily_Activity_Pattern-1.png)<!-- -->
 ### 5-minute interval with the maximum number of steps
  
 Maximum average steps (no.) in an interval: 
@@ -224,188 +220,5 @@ g+  geom_line()+
   labs(x= "Interval")+  labs(y= "Steps")
 ```
 
-![](Figs/Weekday/Weekend Plots-1.png)<!-- -->
-
-```r
-render("PA1_template.Rmd")
-```
-
-```
-## 
-## 
-## processing file: PA1_template.Rmd
-```
-
-```
-##   |                                                                                                                                     |                                                                                                                             |   0%  |                                                                                                                                     |...                                                                                                                          |   3%
-##   ordinary text without R code
-## 
-##   |                                                                                                                                     |.......                                                                                                                      |   5%
-## label: unnamed-chunk-5 (with options) 
-## List of 1
-##  $ include: logi FALSE
-## 
-##   |                                                                                                                                     |..........                                                                                                                   |   8%
-##   ordinary text without R code
-## 
-##   |                                                                                                                                     |.............                                                                                                                |  11%
-## label: global_options-6
-##   |                                                                                                                                     |................                                                                                                             |  13%
-##   ordinary text without R code
-## 
-##   |                                                                                                                                     |....................                                                                                                         |  16%
-## label: unnamed-chunk-7
-##   |                                                                                                                                     |.......................                                                                                                      |  18%
-##   ordinary text without R code
-## 
-##   |                                                                                                                                     |..........................                                                                                                   |  21%
-## label: Activity Data-8 (with options) 
-## List of 1
-##  $ echo: logi TRUE
-## 
-##   |                                                                                                                                     |..............................                                                                                               |  24%
-##   ordinary text without R code
-## 
-##   |                                                                                                                                     |.................................                                                                                            |  26%
-## label: Steps per day-9 (with options) 
-## List of 1
-##  $ echo: logi TRUE
-```
-
-```
-##   |                                                                                                                                     |....................................                                                                                         |  29%
-##   ordinary text without R code
-## 
-##   |                                                                                                                                     |.......................................                                                                                      |  32%
-## label: MeanSteps-10 (with options) 
-## List of 1
-##  $ echo: logi TRUE
-## 
-##   |                                                                                                                                     |...........................................                                                                                  |  34%
-##   ordinary text without R code
-## 
-##   |                                                                                                                                     |..............................................                                                                               |  37%
-## label: MedianSteps-11 (with options) 
-## List of 1
-##  $ echo: logi TRUE
-## 
-##   |                                                                                                                                     |.................................................                                                                            |  39%
-##   ordinary text without R code
-## 
-##   |                                                                                                                                     |.....................................................                                                                        |  42%
-## label: Average Daily Activity Pattern-12 (with options) 
-## List of 1
-##  $ echo: logi TRUE
-```
-
-```
-##   |                                                                                                                                     |........................................................                                                                     |  45%
-##   ordinary text without R code
-## 
-##   |                                                                                                                                     |...........................................................                                                                  |  47%
-## label: MaximumAverageSteps-13 (with options) 
-## List of 1
-##  $ echo: logi TRUE
-## 
-##   |                                                                                                                                     |..............................................................                                                               |  50%
-##   ordinary text without R code
-## 
-##   |                                                                                                                                     |..................................................................                                                           |  53%
-## label: MaximumAverageInterval-14 (with options) 
-## List of 1
-##  $ echo: logi TRUE
-## 
-##   |                                                                                                                                     |.....................................................................                                                        |  55%
-##   ordinary text without R code
-## 
-##   |                                                                                                                                     |........................................................................                                                     |  58%
-## label: Total NAs-15 (with options) 
-## List of 1
-##  $ echo: logi TRUE
-## 
-##   |                                                                                                                                     |............................................................................                                                 |  61%
-##   ordinary text without R code
-## 
-##   |                                                                                                                                     |...............................................................................                                              |  63%
-## label: MissingValues-16 (with options) 
-## List of 1
-##  $ echo: logi TRUE
-```
-
-```
-##   |                                                                                                                                     |..................................................................................                                           |  66%
-##   ordinary text without R code
-## 
-##   |                                                                                                                                     |......................................................................................                                       |  68%
-## label: ImputedActivity-17 (with options) 
-## List of 1
-##  $ echo: logi TRUE
-## 
-##   |                                                                                                                                     |.........................................................................................                                    |  71%
-##   ordinary text without R code
-## 
-##   |                                                                                                                                     |............................................................................................                                 |  74%
-## label: ImputedSteps-18 (with options) 
-## List of 1
-##  $ echo: logi TRUE
-```
-
-```
-##   |                                                                                                                                     |...............................................................................................                              |  76%
-##   ordinary text without R code
-## 
-##   |                                                                                                                                     |...................................................................................................                          |  79%
-## label: AverageSteps_Imp-19 (with options) 
-## List of 1
-##  $ echo: logi TRUE
-## 
-##   |                                                                                                                                     |......................................................................................................                       |  82%
-##   ordinary text without R code
-## 
-##   |                                                                                                                                     |.........................................................................................................                    |  84%
-## label: MedianSteps-20 (with options) 
-## List of 1
-##  $ echo: logi TRUE
-## 
-##   |                                                                                                                                     |.............................................................................................................                |  87%
-##   ordinary text without R code
-## 
-##   |                                                                                                                                     |................................................................................................................             |  89%
-## label: WeekdayVWeekend-21 (with options) 
-## List of 1
-##  $ echo: logi TRUE
-## 
-##   |                                                                                                                                     |...................................................................................................................          |  92%
-##   ordinary text without R code
-## 
-##   |                                                                                                                                     |......................................................................................................................       |  95%
-## label: Weekday/Weekend Plots-22 (with options) 
-## List of 1
-##  $ echo: logi TRUE
-```
-
-```
-##   |                                                                                                                                     |..........................................................................................................................   |  97%
-## label: unnamed-chunk-23 (with options) 
-## List of 1
-##  $ echo: logi TRUE
-```
-
-```
-##   |                                                                                                                                     |.............................................................................................................................| 100%
-##   ordinary text without R code
-```
-
-```
-## output file: PA1_template.knit.md
-```
-
-```
-## "C:/Program Files/RStudio/bin/pandoc/pandoc" +RTS -K512m -RTS PA1_template.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output PA1_template.html --email-obfuscation none --self-contained --standalone --section-divs --template "C:\PROGRA~1\R\R-40~1.0\library\RMARKD~1\rmd\h\DEFAUL~1.HTM" --no-highlight --variable highlightjs=1 --variable "theme:bootstrap" --include-in-header "C:\Users\tsc029\AppData\Local\Temp\RtmpIBm4Ok\rmarkdown-strcdc659e1e62.html" --mathjax --variable "mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
-```
-
-```
-## 
-## Output created: PA1_template.html
-```
+![](Figs/Weekday/Weekend_Plots-1.png)<!-- -->
 

@@ -19,14 +19,14 @@ knitr::opts_chunk$set(fig.path='Figs/')
 
 
 ## 1. Loading and Preprocessing Data
-```{r Activity Data, echo=TRUE }
+```{r Activity_Data, echo=TRUE }
 activity <- read.csv("C://Users/tsc029/Desktop/R/repdata_data_activity/activity.csv", sep = ",", header = TRUE, na.strings = "NA" )
 activity <- transform(activity,  date = factor(date))
 ```
 
 ## 2. The mean number of steps taken per day
 
-```{r Steps per day, echo = TRUE}
+```{r Steps_per_day, echo = TRUE}
 aggActivity <- aggregate(steps~ date , data = activity, FUN = sum, na.rm = TRUE)
 hist(aggActivity$steps, xlab = "Number of steps per day", ylab = "Frequency", main = "Number of steps per day", col = "yellow")
 ```
@@ -38,14 +38,14 @@ print(MeanSteps)
 ```
 
 Median Number of Steps per Day
-```{r MedianSteps, echo=TRUE}
+```{r Median_Steps, echo=TRUE}
 Steps_Med <- median(aggActivity$steps, na.rm = TRUE)
 print(Steps_Med)
 ```
 
 ## 3. Average Daily Activity Pattern
 
-```{r Average Daily Activity Pattern, echo=TRUE}
+```{r Average_Daily_Activity_Pattern, echo=TRUE}
 stepsPerInterval_mean <- aggregate(steps ~ interval, data = activity, FUN = mean, na.rm =TRUE)
 plot(stepsPerInterval_mean$interval, stepsPerInterval_mean$steps, type = "l", xlab = "Interval", ylab = "Number of steps per interval", lwd = 1.5, col = "steelblue", main = "Average Number of Steps per Interval")
 ```
@@ -66,7 +66,7 @@ print(MaximumAverageInterval)
 ## 4. Imputing missing values
 
 The total number of missing values in the dataset (i.e. the total number of rows with NAs):
-```{r Total NAs, echo= TRUE}
+```{r Total_NAs, echo= TRUE}
 sum(is.na(activity))
 ```
 
@@ -147,7 +147,7 @@ imputed_activity$day <- factor(imputed_activity$day)
 ```
 
 ### Make a panel plot containing a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). 
-```{r Weekday/Weekend Plots, echo=TRUE }
+```{r Weekday/Weekend_Plots, echo=TRUE }
 #Aggregate mean steps per intervall and Weekday/Weekend
 day_interval_steps <- aggregate(steps~ interval + day, data = imputed_activity, FUN = mean)
 #Inspect data frame
